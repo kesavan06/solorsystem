@@ -1,0 +1,64 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "spartan";
+  src: url("../fonts/Spartan-Regular.ttf");
+}
+@font-face {
+  font-family: "spartan-bold";
+  src: url("../fonts/Spartan-Bold.ttf");
+}
+
+.header {
+  width: 100vw;
+  padding: 5px 0px 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  /* border: 1px solid rgb(255, 255, 255); */
+}
+
+.heading {
+  width: 15%;
+  text-align: center;
+  /* border: 1px solid rgb(255, 255, 255); */
+}
+
+.heading h1 {
+  color: #f1f1f1;
+  font-family: "Antonio", serif;
+}
+
+.options {
+  width: 50%;
+}
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;
+  /* border: 1px solid rgb(255, 255, 255); */
+}
+
+ul,
+li {
+  color: #838391;
+  font-family: "spartan-bold", serif;
+  font-weight: 900;
+  font-size: 0.9em;
+}
+li {
+  cursor: pointer;
+  padding: 5px;
+}
+
+hr {
+  background-color: #38384f;
+  height: 1px;
+  border: none;
+}

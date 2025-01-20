@@ -1,0 +1,149 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  @font-face {
+    font-family: "spartan";
+    src: url("../fonts/Spartan-Regular.ttf");
+  }
+  @font-face {
+    font-family: "spartan-bold";
+    src: url("../fonts/Spartan-Bold.ttf");
+  }
+  .container {
+    width: fit-content;
+    height: 45em;
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .imageBox {
+    width: 50%;
+    height: 100%;
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .planet {
+    width: 60%;
+    background-image: url(../assets/planet-mercury.svg);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 60%;
+    position: relative;
+  }
+  
+  /* .planet::after {
+    content: "";
+    width: 60%;
+    height: 60%;
+    position: absolute; 
+    top: 70%; 
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 60%;
+    background-image: url(../assets/geology-mercury.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+  } */
+  
+  .planetInformation {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  
+  .contentBox {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  
+  .contentBox h1 {
+    color: white;
+    font-size: 4em;
+    font-family: "Antonio", serif;
+  }
+  
+  .contentBox p {
+    color: #838391;
+    font-size: 1em;
+    width: 65%;
+    letter-spacing: 1.5px;
+    line-height: 2;
+    font-family: "spartan", serif;
+    font-weight: 600;
+  }
+  
+  .source p {
+    color: #838391;
+    font-family: "spartan", serif;
+    font-size: 0.9em;
+    display: inline;
+  }
+  .source p img {
+    width: 11px;
+    margin: 0px 0px 0px 5px;
+  }
+  
+  .source p a {
+    cursor: pointer;
+    font-weight: 800;
+    color: #838391;
+    text-decoration: underline;
+  }
+  
+  .btnOptions {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .btnOptions button {
+    width: 65%;
+    border: 1px solid #38384f;
+    color: #fff;
+    font-size: 0.9em;
+    background-color: transparent;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    font-family: "spartan", sans-serif;
+    font-weight: 600;
+  }
+  
+  .clickedBtn{
+    background-color: #419ebb;
+  }
+  
+  .btnOptions button span {
+    margin: 0px 40px 0px 40px;
+    color: #838391;
+  }
+  .btnOptions button:hover {
+    transition: 0.2s ease all;
+    background-color: #38384f;
+  }
+  
+  .btnOptions button:not(:hover) {
+    transition: 0.2s ease all;
+  }
+  
