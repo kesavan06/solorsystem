@@ -4,7 +4,7 @@ function getPlanetData(planetName, callback) {
   let planetObj = {};
   let count = 0;
   for (let i in data) {
-    if (data[i].name.toUpperCase() == planetName) {
+    if (data[i].name.toUpperCase() == planetName.toUpperCase()) {
       planetObj = data[i];
       count += 1;
       break;

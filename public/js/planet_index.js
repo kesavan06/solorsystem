@@ -12,13 +12,17 @@ let overview = document.getElementById("overview");
 let internalStructure = document.getElementById("internalStructure");
 let surface = document.getElementById("surface");
 overview.style.backgroundColor = "#419ebb";
+
 let planetData;
 let addtionalData;
 let planetName;
 
 async function defaultPlanetData() {
   try {
-    const res = await fetch("http://localhost:3006/default");
+    const res = await fetch("/default", {
+      method: "GET",
+      mode: "cors",
+    });
     planetData = await res.json();
     givePlanetValues(planetData);
     planetName = planetData.name;
@@ -31,9 +35,13 @@ defaultPlanetData();
 
 for (let liEle of planetElements) {
   liEle.addEventListener("click", async () => {
+    planetImg.classList.remove("planetAfter");
+    internalStructure.style.backgroundColor = "transparent";
+    overview.style.backgroundColor = "#419ebb";
+    surface.style.backgroundColor = "transparent";
     planetName = liEle.textContent;
     planetData = await fetch(
-      "http://localhost:3006/planets?planetname=" + planetName
+      "/planets?planetname=" + planetName
     )
       .then((res) => res.json())
       .then((data) => data);
@@ -44,11 +52,19 @@ for (let liEle of planetElements) {
 for (let btn of optionBtns) {
   btn.addEventListener("click", async () => {
     addtionalData = await fetch(
-      "http://localhost:3006/additional?planetname=" + planetName
+      "/planets?planetname=" + planetName
     )
       .then((res) => res.json())
       .then((data) => data);
     console.log(addtionalData);
+
+    if (btn.textContent.trim() == "01 OVERVIEW") {
+      overviewDetails(addtionalData);
+    } else if (btn.textContent.trim() == "02 INTERNAL STRUCTURE") {
+      internalStrunctureDetails(addtionalData);
+    } else if (btn.textContent.trim() == "03 SURFACE GEOLOGY") {
+      surfaceDetails(addtionalData);
+    }
   });
 }
 
@@ -61,4 +77,41 @@ function givePlanetValues(data) {
   revolutionTime.textContent = data.revolution.toUpperCase();
   radius.textContent = data.radius.toUpperCase();
   avgTemp.textContent = data.temperature.toUpperCase();
+}
+
+function overviewDetails(data) {
+  planetContent.textContent = data.overview.content;
+  planetImg.style.backgroundImage = `url('${data.images.planet}')`;
+  planetImg.classList.remove("planetAfter");
+  planetLink.setAttribute("href", data.overview.source);
+
+  internalStructure.style.backgroundColor = "transparent";
+  overview.style.backgroundColor = "#419ebb";
+  surface.style.backgroundColor = "transparent";
+}
+
+function internalStrunctureDetails(data) {
+  planetContent.textContent = data.structure.content;
+  planetImg.style.backgroundImage = `url('${data.images.internal}')`;
+  planetImg.classList.remove("planetAfter");
+  planetLink.setAttribute("href", data.structure.source);
+
+  internalStructure.style.backgroundColor = "#419ebb";
+  overview.style.backgroundColor = "transparent";
+  surface.style.backgroundColor = "transparent";
+}
+
+function surfaceDetails(data) {
+  planetContent.textContent = data.geology.content;
+  planetImg.style.backgroundImage = `url('${data.images.planet}')`;
+  planetImg.classList.add("planetAfter");
+  planetImg.style.setProperty(
+    "--bg-image",
+    `url('/assets/geology-${planetName.toLowerCase()}.png')`
+  );
+  planetLink.setAttribute("href", data.geology.source);
+
+  internalStructure.style.backgroundColor = "transparent";
+  overview.style.backgroundColor = "transparent";
+  surface.style.backgroundColor = "#419ebb";
 }

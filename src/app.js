@@ -10,7 +10,7 @@ const viewPath = path.join(__dirname, "../views");
 const pubDir = path.join(__dirname, "../public");
 
 app.set("view engine", "ejs");
-app.set("views", viewPath);
+app.set("views", viewPath); 
 app.use(express.static(pubDir));
 
 app.get("/", (req, res) => {
@@ -35,6 +35,7 @@ app.get("/additional", (req, res) => {
     });
   }
   let planetName = req.query.planetname;
+
   planetData(planetName, (error, data) => {
     if (error) {
       return res.send({ error });
